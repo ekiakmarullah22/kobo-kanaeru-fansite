@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kobo Kanaeru</title>
+    <meta name="description" content="Kobo Kanaeru Fan Website">
+    <meta name="og:title" property="og:title" content="kobo-fansite">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" href="assets/images/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader"></div>
+    <!-- Top Navbar -->
+    <div class="container-fluid full-width">
+      <ul class="nav justify-content-end gradient">
+        <li class="nav-item">
+          <a href="https://hololive.hololivepro.com/en/talents?gp=indonesia" class="nav-link text-light" target="_blank">Hololive</a>
+        </li>
+        <li class="nav-item">
+          <a href="https://hololive.hololivepro.com/en/talents/kobo-kanaeru/" class="nav-link text-light" target="_blank">Vtuber</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="https://www.youtube.com/channel/UCjLEmnpCNeisMxy134KPwWw" class="nav-link text-light" target="_blank">Youtube</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="https://www.youtube.com/channel/UCjLEmnpCNeisMxy134KPwWw" class="nav-link text-light" target="_blank">Membership</a>
+        </li>
+      </ul>
+      <!-- Main Navbar -->
+      <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="assets/images/170px-Channel_Logo_-_Kobo_Kanaeru_01.png" alt="Kobo Kanaeru Logo" class="img-fluid img-custom">
+          </a>
+          
+          <div class="menu-wrap justify-content-end">
+            <input type="checkbox" class="toggler">
+            <div class="hamburger"><div></div></div>
+            <div class="menu">
+              <div>
+                <div>
+                  <img src="assets/images/kobo.png" alt="Kobo Kanaeru" class="img-fluid img-custom border-custom">
+                  <ul class="nav minus-margin-top" id="desktop-menu">
+                    <li class="nav-item"><a href="#" class="nav-link link">Home</a></li>
+                    <li class="nav-item"><a href="#profile" class="nav-link link">Profile</a></li>
+                    <li class="nav-item"><a href="#fanArt" class="nav-link link">Fan Art</a></li>
+                    <li class="nav-item"><a href="#milestone" class="nav-link link">Milestone</a></li>
+                  </ul>
+
+                  <ul class="nav minus-margin-top" id="responsive-menu">
+                    <li class="nav-item"><a href="#profile" class="nav-link link">Profile</a></li>
+                    <li class="nav-item"><a href="#fanArt" class="nav-link link">Fan Art</a></li>
+                    <li class="nav-item"><a href="#milestone" class="nav-link link">Milestone</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Music Player -->
+    <div class="fluid-container full-width music-player-canvas" id="desktop-music-player">
+      <div class="main">
+        <!-- LEFT Music Player -->
+        <div class="left">
+          <!-- Music image -->
+          <img id="track_image"/>
+          <!-- Music volume -->
+          <div class="volume">
+            <p id="volume_show">90</p>
+            <i class="fa fa-volume-up" aria-hidden="true" id="volume_icon" onclick="mute_sound()"></i>
+            <input type="range" id="volume" min="0" max="100" value="90" onchange="volume_change()"/>
+          </div>
+        </div>
+        
+        <!-- RIGHT Music Player -->
+        <div class="right">
+          <div class="show_song_no">
+            <p id="present">1</p>
+            <p>/</p>
+            <p id="total">7</p>
+          </div>
+
+          <!-- Music title -->
+          <p id="title">title.mp3</p>
+          <p id="artist">Artist</p>
+
+          <!-- Music Controls -->
+          <div class="middle">
+            <button onclick="previous_song()" id="pre"><i class="fa fa-step-backward" aria-hidden="true"></i></button>
+            <button onclick="just_play()" id="play"><i class="fa fa-play" aria-hidden="true"></i></button>
+            <button onclick="next_song()" id="next"><i class="fa fa-step-forward" aria-hidden="true"></i></button>
+          </div>
+
+          <!-- Music duration -->
+          <div class="duration">
+            <input type="range" min="0" max="100" value="0" id="duration_slider" onchange="duration_change()"/>
+          </div>
+
+          <!-- Auto Play Music -->
+          <button id="auto" onclick="autoplay_switch()">Auto Play <i class="fa fa-circle-o-notch" aria-hidden="true"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="fluid-container full-width gradient" id="mobile-music-player">
+      <div class="music-canvas">
+        <!-- music images -->
+        <img class="music-images" id="track_image_responsive"/>
+
+        <!-- Music data's -->
+        <div class="music-data">
+          <p id="title_responsive">title.mp3</p>
+          <p id="artist_responsive">Artist</p>
+        </div>
+
+        <!-- music controls -->
+        <div class="music-control">
+          <button onclick="previous_song()" id="pre_responsive"><i class="fa fa-step-backward" aria-hidden="true"></i></button>
+          <button onclick="just_play()" id="play_responsive"><i class="fa fa-play" aria-hidden="true"></i></button>
+          <button onclick="next_song()" id="next_responsive"><i class="fa fa-step-forward" aria-hidden="true"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- About Lort Kobo Section -->
+
+    <div class="fluid-container full-width" id="profile">
+      <div class="row">
+        <div class="col-md-6 bg-image">
+           <figure>
+            <img src="assets/images/Kobo-Kanaeru_pr-img_resize.png" width="721" height="1440" />
+           </figure>
+        </div>
+
+        <div class="col-md-6 mb-4">
+          <h1 class="text-center mt-5 text-secondary">Kobo Kanaeru</h1>
+          <span class="text-center d-block text-secondary">こぼ・かなえる</span>
+          <p class="text-secondary text-width">A carefree girl who lives in the topmost room of a lighthouse, she is actually the bloodline of the strongest rain shaman in the area. She has great potential to control rain, but she does not like to do it as a task.</p>
+          <p class="text-secondary text-width2">In order to win back her Rain Master title, she needs to prove to her family that she can keep their rain shaman service afloat. Not only does she have to train daily, but she also needs to adopt some sort of virtual marketing strategy to succeed!</p>
+
+          <a href="https://www.youtube.com/channel/UCjLEmnpCNeisMxy134KPwWw" class="btn-custom btn-desktop">Youtube <i class="fa fa-angle-right icon-position-end" aria-hidden="true"></i></a>
+          <a href="https://twitter.com/kobokanaeru" class="btn-2 btn-desktop">Twitter <i class="fa fa-angle-right icon-position-end" aria-hidden="true"></i></a>
+
+          <a href="https://www.youtube.com/channel/UCjLEmnpCNeisMxy134KPwWw" class="btn-custom btn-mobile">Youtube</a>
+          <a href="https://twitter.com/kobokanaeru" class="btn-2 btn-mobile">Twitter</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fan Art Lort Kobo -->
+
+    <div class="fluid-container full-width" id="fanArt">
+      <div class="custom-container">
+ 
+        <div class="timeline">
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide" style="background-image: url(assets/images/fanArts/FXrRkegUcAYfBCB.png)" data-year="Percy">
+                <div class="swiper-slide-content"><span class="timeline-year">Percy</span>
+                  <h4 class="timeline-title">We'll Love You Sana </h4>
+                  <a href="https://twitter.com/Peryrypan/status/1547780016242434050/" class="btn-2 timeline-text" target="_blank">Twitter</a>
+                </div>
+              </div>
+              <div class="swiper-slide" style="background-image: url(assets/images/fanArts/FXtWN8rakAA4pj7.jfif)" data-year="keenbiscuit">
+                <div class="swiper-slide-content"><span class="timeline-year">keenbiscuit</span>
+                  <h3 class="timeline-title">Uncle Daddy and Water Son</h3>
+                  <a href="https://twitter.com/keenbiscuit/status/1547953852963766272" class="btn-2 timeline-text" target="_blank">Twitter</a>
+                </div>
+              </div>
+              <div class="swiper-slide" style="background-image: url(assets/images/fanArts/FX9GGVSVsAApWfQ.jfif)" data-year="Schyph">
+                <div class="swiper-slide-content"><span class="timeline-year">Schyph</span>
+                  <h4 class="timeline-title">Kobo's Happy Family</h4>
+                  <a href="https://twitter.com/schyph/status/1549036566902820864" class="btn-2 timeline-text" target="_blank">Twitter</a>
+                </div>
+              </div>
+              <div class="swiper-slide" style="background-image: url(assets/images/fanArts/FYWOyW-UIAAM4m1.jfif)" data-year="Skikkk">
+                <div class="swiper-slide-content"><span class="timeline-year">Skikkk</span>
+                  <h4 class="timeline-title">Neko Booo ~</h4>
+                  <a href="https://twitter.com/SkikkkSkuyyy/status/1550802645287182336/" class="btn-2 timeline-text" target="_blank">Twitter</a>
+                </div>
+              </div>
+              <div class="swiper-slide" style="background-image: url(assets/images/fanArts/FYW_gJhVQAIJon8.jfif)" data-year="vishalmon">
+                <div class="swiper-slide-content"><span class="timeline-year">vishalmon</span>
+                  <h4 class="timeline-title">Kobo's Brother's ?</h4>
+                  <a href="https://twitter.com/vishsalmon/status/1550856208977838080/" class="btn-2 timeline-text" target="_blank">Twitter</a>
+                </div>
+              </div>
+              <div class="swiper-slide" style="background-image: url(assets/images/fanArts/FXxJvSGVsAATdz1.jfif)" data-year="azukitidayo">
+                <div class="swiper-slide-content"><span class="timeline-year">azukitidayo</span>
+                  <h4 class="timeline-title">Kobo's and her wallet</h4>
+                  <a href="https://twitter.com/azukitidayo/status/1548194889371832320" class="btn-2 timeline-text" target="_blank">Twitter</a>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Data lort -->
+    <div class="fluid-container full-width mt-5" id="milestone">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="text-center"><em>Milestone Kobo Kanaeru</em></h1>
+        </div>
+      </div>
+
+      <div class="timeline-section">
+        <div class="timeline-items">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">
+              Jan. 27. 2022
+            </div>
+            <div class="timeline-content">
+              Twitter account creation date
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">
+              Jan. 27. 2022
+            </div>
+            <div class="timeline-content">
+              Youtube account creation date
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">
+              Mar. 27. 2022
+            </div>
+            <div class="timeline-content">
+              Youtube debut and first uploaded video.
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">
+              Mar. 29. 2022
+            </div>
+            <div class="timeline-content">
+              Achieved a 200,000 YouTube subscriber milestone
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">
+              Apr. 05. 2022
+            </div>
+            <div class="timeline-content">
+              Achieved a 300,000 YouTube subscriber milestone
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">
+              Apr. 30. 2022
+            </div>
+            <div class="timeline-content">
+              Achieved a 400,000 YouTube subscriber milestone
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">
+              May. 12. 2022
+            </div>
+            <div class="timeline-content">
+              Achieved a 500,000 YouTube subscriber milestone
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">
+              May. 25. 2022
+            </div>
+            <div class="timeline-content">
+              Achieved a 600,000 YouTube subscriber milestone
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">
+              Jun. 06. 2022
+            </div>
+            <div class="timeline-content">
+              Achieved a 700,000 YouTube subscriber milestone
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">
+              Jun. 19. 2022
+            </div>
+            <div class="timeline-content">
+              Achieved a 800,000 YouTube subscriber milestone
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">
+              Jul. 04. 2022
+            </div>
+            <div class="timeline-content">
+              Achieved a 900,000 YouTube subscriber milestone
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">
+              Jul. 10. 2022
+            </div>
+            <div class="timeline-content">
+              Achieved a 1,000,000 YouTube subscriber milestone
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HOLOID Membres Section -->
+    <div class="fluid-container full-width gradient" id="holoID_Members_desktop">
+      <div class="holo-canvas">
+        <fieldset>
+          <legend>Hololive Indonesia</legend>
+          <div class="card-content">
+            <div class="holo-card" id="card1">
+              <div>
+                <h4>Ayunda Risu</h4>
+                <a href="https://twitter.com/ayunda_risu" class="btn btn-outline-primary" target="_blank">Twitter</a>
+              </div>
+            </div>
+            <div class="holo-card" id="card2">
+              <div>
+                <h4>Moona Hoshinova</h4>
+                <a href="https://twitter.com/moonahoshinova" class="btn btn-outline-primary" target="_blank">Twitter</a>
+              </div>
+            </div>
+            <div class="holo-card" id="card3">
+              <div>
+                <h4>Airani Iofiteen</h4>
+                <a href="https://twitter.com/airaniiofifteen" class="btn btn-outline-primary" target="_blank">Twitter</a>
+              </div>
+            </div>
+            <div class="holo-card" id="card4">
+              <div>
+                <h4>Kureiji Ollie</h4>
+                <a href="https://twitter.com/kureijiollie" class="btn btn-outline-primary" target="_blank">Twitter</a>
+              </div>
+            </div>
+            <div class="holo-card" id="card5">
+              <div>
+                <h4>Anya Melfissa</h4>
+                <a href="https://twitter.com/anyamelfissa" class="btn btn-outline-primary" target="_blank">Twitter</a>
+              </div>
+            </div>
+            <div class="holo-card" id="card6">
+              <div>
+                <h4>Pavolia Reine</h4>
+                <a href="https://twitter.com/pavoliareine" class="btn btn-outline-primary" target="_blank">Twitter</a>
+              </div>
+            </div>
+            <div class="holo-card" id="card7">
+              <div>
+                <h4>Vestia Zeta</h4>
+                <a href="https://twitter.com/vestiazeta" class="btn btn-outline-primary" target="_blank">Twitter</a>
+              </div>
+            </div>
+            <div class="holo-card" id="card8">
+              <div>
+                <h4>Kaela Kovalskia</h4>
+                <a href="https://twitter.com/kaelakovalskia" class="btn btn-outline-primary" target="_blank">Twitter</a>
+              </div>
+            </div>
+            <div class="holo-card" id="card9">
+              <div>
+                <h4>Kobo Kanaeru</h4>
+                <a href="https://twitter.com/kobokanaeru" class="btn btn-outline-primary" target="_blank">Twitter</a>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+
+    <!-- responsive holo id members card -->
+    <div class="fluid-container full-width gradient" id="holoID_Members_mobile">
+      <div class="holo-responsive-card-canvas">
+        <fieldset>
+          <legend>Hololive Indonesia 1st Gen</legend>
+          <div class="holo-responsive-card">
+              <div class="holo-responsive-card-header" id="risu-bg">
+                <div class="holo-img-canvas">
+                  <img src="assets/images/holoIDMembers/ayunda risu.png" />
+                </div>
+              </div>
+              <div class="holo-responsive-card-body">
+                <h4 class="text-dark text-center">Ayunda Risu</h4>
+                <a href="https://twitter.com/ayunda_risu" class="btn btn-outline-primary" target="_blank">Twitter</a>
+              </div>
+          </div>
+
+          <div class="holo-responsive-card" style="margin-top: 80px;">
+            <div class="holo-responsive-card-header" id="moona-bg">
+              <div class="holo-img-canvas">
+                <img src="assets/images/holoIDMembers/moona hoshinova.png" />
+              </div>
+            </div>
+            <div class="holo-responsive-card-body">
+              <h4 class="text-dark text-center">Moona Hoshinova</h4>
+              <a href="https://twitter.com/moonahoshinova" class="btn btn-outline-primary" target="_blank">Twitter</a>
+            </div>
+          </div>
+
+          <div class="holo-responsive-card" style="margin-top: 80px;">
+            <div class="holo-responsive-card-header" id="iofi-bg">
+              <div class="holo-img-canvas">
+                <img src="assets/images/holoIDMembers/iofi.png" />
+              </div>
+            </div>
+            <div class="holo-responsive-card-body">
+              <h4 class="text-dark text-center">Airani Iofiteen</h4>
+              <a href="https://twitter.com/airaniiofifteen" class="btn btn-outline-primary" target="_blank">Twitter</a>
+            </div>
+          </div>
+        </fieldset>
+
+      <fieldset style="margin-top: 80px;">
+        <legend>Hololive Indonesia 2nd Gen</legend>
+
+        <div class="holo-responsive-card">
+          <div class="holo-responsive-card-header" id="ollie-bg">
+            <div class="holo-img-canvas">
+              <img src="assets/images/holoIDMembers/ollie.png" />
+            </div>
+          </div>
+          <div class="holo-responsive-card-body">
+            <h4 class="text-dark text-center">Kureiji Ollie</h4>
+            <a href="https://twitter.com/kureijiollie" class="btn btn-outline-primary" target="_blank">Twitter</a>
+          </div>
+        </div>
+
+        <div class="holo-responsive-card">
+          <div class="holo-responsive-card-header" id="reine-bg" style="margin-top: 80px;">
+            <div class="holo-img-canvas">
+              <img src="assets/images/holoIDMembers/reine.png" />
+            </div>
+          </div>
+          <div class="holo-responsive-card-body">
+            <h4 class="text-dark text-center">Pavolia Reine</h4>
+            <a href="https://twitter.com/pavoliareine" class="btn btn-outline-primary" target="_blank">Twitter</a>
+          </div>
+        </div>
+
+        <div class="holo-responsive-card">
+          <div class="holo-responsive-card-header" id="anya-bg" style="margin-top: 80px;">
+            <div class="holo-img-canvas">
+              <img src="assets/images/holoIDMembers/anya.png" />
+            </div>
+          </div>
+          <div class="holo-responsive-card-body">
+            <h4 class="text-dark text-center">Anya Melfissa</h4>
+            <a href="https://twitter.com/anyamelfissa" class="btn btn-outline-primary" target="_blank">Twitter</a>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset style="margin-top: 80px;">
+        <legend>Hololive Indonesia 3rd Gen</legend>
+
+        <div class="holo-responsive-card">
+          <div class="holo-responsive-card-header" id="zeta-bg">
+            <div class="holo-img-canvas">
+              <img src="assets/images/holoIDMembers/zeta.png" />
+            </div>
+          </div>
+          <div class="holo-responsive-card-body">
+            <h4 class="text-dark text-center">Vestia Zeta</h4>
+            <a href="https://twitter.com/vestiazeta" class="btn btn-outline-primary" target="_blank">Twitter</a>
+          </div>
+        </div>
+
+        <div class="holo-responsive-card">
+          <div class="holo-responsive-card-header" id="kaela-bg" style="margin-top: 80px;">
+            <div class="holo-img-canvas">
+              <img src="assets/images/holoIDMembers/kaela.png" />
+            </div>
+          </div>
+          <div class="holo-responsive-card-body">
+            <h4 class="text-dark text-center">Kaela Kovalskia</h4>
+            <a href="https://twitter.com/kaelakovalskia" class="btn btn-outline-primary" target="_blank">Twitter</a>
+          </div>
+        </div>
+
+        <div class="holo-responsive-card">
+          <div class="holo-responsive-card-header" id="lort-bg" style="margin-top: 80px;">
+            <div class="holo-img-canvas">
+              <img src="assets/images/holoIDMembers/lort.png" />
+            </div>
+          </div>
+          <div class="holo-responsive-card-body">
+            <h4 class="text-dark text-center">Kobo Kanaeru</h4>
+            <a href="https://twitter.com/kobokanaeru" class="btn btn-outline-primary" target="_blank">Twitter</a>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+    </div>
+
+    <!-- footer -->
+    <div class="fluid-container full-width">
+      <footer class="bg-dark text-center text-white">
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+          <!-- Section: Social media -->
+          <section class="mb-4 footer">
+      
+            <!-- Twitter -->
+            <a class="btn btn-outline-light btn-floating m-1" href="https://twitter.com/watabe_id" role="button" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+      
+            <!-- Instagram -->
+            <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/watabeorenji/" role="button" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+
+            <!-- Youtube -->
+            <a class="btn btn-outline-light btn-floating m-1" href="https://www.youtube.com/channel/UChkDQdCqyohmrM9D9Gcn3uA" role="button" target="_blank"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+      
+            <!-- Github -->
+            <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/ekiakmarullah22" role="button" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+
+          </section>
+          <!-- Section: Social media -->
+        </div>
+        <!-- Grid container -->
+      
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+          © 2022 Copyright:
+          <a class="text-white" href="https://mdbootstrap.com/" style="text-decoration: none;">Watabe Orenji</a>
+        </div>
+        <!-- Copyright -->
+      </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.min.js"></script>
+    <script src="assets/js/swiper.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script src="assets/js/audio.js"></script>
+    <script src="assets/js/preloader.js"></script>
+  </body>
+</html>
