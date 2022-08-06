@@ -939,7 +939,7 @@ figure > img {
   width: 100%;
   height: 50vh;
   box-sizing: border-box;
-  margin-top: -100px;
+  margin-top: 500px;
 }
 
 .card-content {
@@ -1043,10 +1043,68 @@ legend {
   font-size: 15px;
 }
 
+/* style for youtube channel section */
+.yt-canvas {
+  width: 100%;
+  height: 50vh;
+  margin-top: -100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url(../images/channel/kobo\ kanaeru\ youtube\ banner.jfif);
+  background-size: cover;
+  background-position: center center;
+}
+
+.yt-thumbnail {
+  width: 150px;
+  height: 150px;
+  border: 3px dashed #fff;
+  border-radius: 50%;
+  background-color: #fff;
+  margin-top: 55%;
+}
+
+.yt-description {
+  width: 450px;
+  text-align: center;
+}
+
+.yt-data {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.yt-data > span:not(first) {
+  margin-left: 10px;
+}
+
+#yt-subs > i,
+#yt-viewTime > i,
+#yt-totalVideo > i {
+  color: #fff;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#yt-video {
+  width: 100%;
+  margin-top: -20px;
+}
+
+#yt-video > iframe {
+  margin: 20px;
+}
+
 
 /* responsive */
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
+  body {
+    overflow-x: hidden;
+  }
   #desktop-menu,
   .btn-desktop,
   #desktop-music-player,
@@ -1124,13 +1182,14 @@ legend {
   }
 
   .music-data {
-    width: 80%;
+    width: 100%;
     height: 100px;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin-top: 80px;
-    transform: translateX(13%);
     color: #fff;
-    text-align: center;
   }
 
   .music-data p:last-child {
@@ -1162,7 +1221,7 @@ legend {
   }
 
   #holoID_Members_mobile {
-    margin-top: -100px;
+    margin-top: 780px;
     padding: 10px;
   }
 
@@ -1280,6 +1339,32 @@ legend {
     width: 50%;
     display: block;
     margin: 0 auto;
+  }
+
+  .yt-canvas {
+    height: 50vh;
+    background-repeat: no-repeat;
+  }
+
+  .yt-thumbnail {
+    margin-top: 1020px;
+  }
+
+  .yt-description {
+    width: 315px;
+  }
+
+  .yt-data {
+    margin-top: -10px;
+    flex-direction: column;
+  }
+
+  .yt-data > span:not(first) {
+    margin-top: 10px;
+  }
+
+  #yt-video {
+    flex-direction: column;
   }
 
   .preloader {

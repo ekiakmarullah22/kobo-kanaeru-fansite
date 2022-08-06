@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.8/themes/odometer-theme-default.min.css" integrity="sha512-jHurNV8IL4Q4DRHzlRaIboSWZqnA3KU6KTiRQrtU+jxE1MHxdiveHrztuHhyna6PWTE427SxNDDUqjaruirB2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   </head>
   <body>
@@ -141,6 +142,7 @@
         <div class="col-md-6 bg-image">
            <figure>
             <img src="assets/images/Kobo-Kanaeru_pr-img_resize.png" width="721" height="1440" />
+            <h3 id="yt-title"></h3>
            </figure>
         </div>
 
@@ -340,6 +342,37 @@
             <div class="timeline-content">
               Achieved a 1,000,000 YouTube subscriber milestone
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Youtube Channel Information -->
+    <div class="fluid-container full-width">
+      <div class="yt-canvas">
+        <img class="yt-thumbnail" />
+        <h3 id="yt-name"></h3>
+        <p class="text-secondary yt-description">Bokobokobo- Kobo Kanaeru at your service! Let me be your sun to shine your day, ehe~☔ Rain shaman from HoloID Gen 3! ID/EN OK. Mama: @ponkan_8 Papa: @otsukue</p>
+        <div class="yt-data">
+          <span class="badge bg-success"><i class="fa fa-youtube-play me-2" aria-hidden="true"></i>Subscribers<span id="yt-subs" class="ms-2"></span></span>
+          <span class="badge bg-info"><i class="fa fa-clock-o me-2" aria-hidden="true"></i>Wactch TIme<span class="ms-2" id="yt-viewTime"></span></span>
+
+          <span class="badge bg-primary"><i class="fa fa-video-camera me-2" aria-hidden="true"></i>Videos<span class="ms-2" id="yt-totalVideo"></span></span>
+        </div>
+
+        <div class="row my-2" id="yt-video-row-title">
+          <div class="col-md-12">
+            <h4 class="text-center mt-2">Kobo Kanaeru Latest Video</h4>
+          </div>
+        </div>
+
+        <div class="row" id="yt-video-row">
+          <div class="col-md-3 d-flex justify-content-center" id="yt-video"></div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <p class="text-center form-text" id="date"></p>
           </div>
         </div>
       </div>
@@ -573,5 +606,7 @@
     <script src="assets/js/custom.js"></script>
     <script src="assets/js/audio.js"></script>
     <script src="assets/js/preloader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.8/odometer.min.js" integrity="sha512-51WDTV7haD9BBDc8RWH2r5TnuSiRyAqEnbGyuKHYn+qpYCrCckxFeqlr1I5UoOULijyLV2vnHO9LS4MrAzHxwQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="assets/js/youtubeDataApi.js"></script>
   </body>
 </html>
