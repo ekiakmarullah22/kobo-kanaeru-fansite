@@ -6,6 +6,7 @@ Kobo's Fansite is a fan made website, that I create for enjoying song and get in
 3. [x] Fan Art Section
 4. [x] Milestone
 5. [x] Hololive Indonesia Talents Social Media
+6. [x] Kobo Kanaeru Youtube Api
 ## Website Built With
 <div style="display: inline;">
 	<img src="https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5">
