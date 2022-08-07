@@ -103,7 +103,7 @@ fetch(`https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${youtubeC
 
   else {
     yt_thumbnail.src = "../assets/images/kobo.png";
-    yt_thumbnail.style.marginTop = "40%";
+    yt_thumbnail.style.marginTop = "605px";
     yt_name.innerHTML = "Kobo Kanaeru Ch. hololive-ID";
   }
 })
@@ -170,6 +170,6 @@ fetch(`https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&chan
           //take yt video and delete them
           document.getElementById("yt-video-row-title").remove();
           document.getElementById("yt-video-row").remove();
-          document.querySelector(".holo-canvas").style.marginTop = "265px";
+          document.querySelector("#holoID_Members_mobile").style.marginTop = "365px";
     	  }
 })
