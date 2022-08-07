@@ -1,9 +1,8 @@
-let preloader = document.getElementById("preloader");
-let body = document.getElementsByTagName("body")[0];
-
+let loader = document.getElementById("preloader");
 window.addEventListener("load", function() {
-    setTimeout(function() {
-        preloader.style.display = "none";
-        body.style.overflowY = "scroll";
-    }, 1000);
-});
+    document.body.style.overflow = "hidden"
+    window.setTimeout(() => {
+      loader.style.display = "none";
+      document.body.style.overflowY = "scroll"
+    }, 1000)
+  })

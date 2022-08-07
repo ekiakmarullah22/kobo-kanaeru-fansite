@@ -1104,7 +1104,7 @@ legend {
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   body {
-    overflow-x: hidden;
+    overflow-x: hidden !important;
   }
   #desktop-menu,
   .btn-desktop,
